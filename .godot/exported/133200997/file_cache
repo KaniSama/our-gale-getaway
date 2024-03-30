@@ -1,3 +1,4 @@
-res://Scenes/Entities/Spider/dish.tscn::6ab01651e154c787c568bc3e52f870c8::1711813433::res://.godot/exported/133200997/export-1bad5973105f3779b62ee7ec78229688-dish.scn
-res://Scenes/world.tscn::08c36b4d1afd3cc0ae1f127384a65a21::1711813433::res://.godot/exported/133200997/export-0271e18ecf37a36b455ad0b215994549-world.scn
-res://Scenes/Modules/house.tscn::f6de1e948f6ecc9b8413ac2670bd214c::1711813433::res://.godot/exported/133200997/export-bb8ad110f6f5c80f46e6d79ebeb91c9f-house.scn
+res://Scenes/Entities/Spider/dish.tscn::ec93a2143fd393fb4b4b794fa25e30da::1711832867::res://.godot/exported/133200997/export-1bad5973105f3779b62ee7ec78229688-dish.scn
+res://Scenes/world.tscn::74bb768ca6248722932f8772936b9f5a::1711832867::res://.godot/exported/133200997/export-0271e18ecf37a36b455ad0b215994549-world.scn
+res://Scenes/Modules/house.tscn::d6779b57219e5ffe98cb41b18782a71f::1711832867::res://.godot/exported/133200997/export-bb8ad110f6f5c80f46e6d79ebeb91c9f-house.scn
+res://Models/textures/WindSprite/wind_sprite_frames.tres::c938d2dfa3a1e8d8903a1b65dd72c7a3::1711832156::res://.godot/exported/133200997/export-a61953b61a671b30571cadcc337b8578-wind_sprite_frames.res

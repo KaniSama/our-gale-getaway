@@ -1,7 +1,7 @@
 extends Node3D
 
-@onready var cam = $Camera3D
-@onready var dish = $Dish
+@onready var cam = $Player/Camera3D
+@onready var dish = $Player/Dish
 @onready var init_cam_pos : Vector3
 
 

@@ -1,4 +1,4 @@
 res://Scenes/world.tscn
+res://Shaders/bulge.gdshader
 res://Scenes/Entities/Spider/dish.tscn
 res://Scenes/Modules/house.tscn
-res://Scripts/world.gd
