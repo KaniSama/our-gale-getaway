@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bo72u712x0vm1"]
+
+[ext_resource type="PackedScene" uid="uid://dhaodou8csqc3" path="res://Scenes/Entities/Spider/dish.tscn" id="1_cm4g3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w5das"]
+size = Vector3(13, 1, 12)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iewmu"]
+
+[sub_resource type="Sky" id="Sky_o2trh"]
+sky_material = SubResource("ProceduralSkyMaterial_iewmu")
+
+[sub_resource type="Environment" id="Environment_akm0w"]
+background_mode = 2
+background_energy_multiplier = 1.67
+sky = SubResource("Sky_o2trh")
+
+[node name="World" type="Node3D"]
+
+[node name="Dish" parent="." instance=ExtResource("1_cm4g3")]
+
+[node name="Camera3D" type="Camera3D" parent="Dish"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 9, 6)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Dish"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dish/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.490742, 0)
+shape = SubResource("BoxShape3D_w5das")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_akm0w")
