@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://bo72u712x0vm1"]
+[gd_scene load_steps=28 format=3 uid="uid://bo72u712x0vm1"]
 
 [ext_resource type="PackedScene" uid="uid://dhaodou8csqc3" path="res://Scenes/Entities/Spider/dish.tscn" id="1_cm4g3"]
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_oo3gg"]
 [ext_resource type="Texture2D" uid="uid://bci1suqxct5x8" path="res://Models/textures/grass_texture.jpg" id="2_agmo2"]
 [ext_resource type="PackedScene" uid="uid://d3hsrdlajaotx" path="res://Scenes/Modules/house.tscn" id="2_ih6xq"]
 [ext_resource type="Script" path="res://Scripts/Ground.gd" id="3_anktj"]
@@ -53,12 +54,13 @@ background_mode = 2
 sky = SubResource("Sky_o2trh")
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_oo3gg")
 
-[node name="Dish" parent="." instance=ExtResource("1_cm4g3")]
-
-[node name="Camera3D" type="Camera3D" parent="Dish"]
+[node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 12, 3)
 current = true
+
+[node name="Dish" parent="." instance=ExtResource("1_cm4g3")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Dish"]
 

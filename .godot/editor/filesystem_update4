@@ -1,3 +1,4 @@
 res://Scenes/world.tscn
 res://Scenes/Entities/Spider/dish.tscn
 res://Scenes/Modules/house.tscn
+res://Scripts/world.gd

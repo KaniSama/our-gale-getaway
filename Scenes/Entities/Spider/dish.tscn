@@ -82,6 +82,10 @@ rotation_edit_mode = 1
 [node name="RightTracking" type="Marker3D" parent="Armature/Skeleton3D" index="4"]
 rotation_edit_mode = 1
 
+[node name="Body" parent="Armature/Skeleton3D" index="5"]
+lod_bias = 5.0
+gi_mode = 0
+
 [node name="LegF_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="15"]
 process_priority = 1
 root_bone = &"LegF.001"
