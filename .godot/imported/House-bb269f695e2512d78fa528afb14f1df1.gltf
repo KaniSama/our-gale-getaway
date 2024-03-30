@@ -3,6 +3,10 @@
 		"generator":"Khronos glTF Blender I/O v3.6.27",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_materials_specular",
+		"KHR_materials_ior"
+	],
 	"scene":0,
 	"scenes":[
 		{
@@ -31,6 +35,18 @@
 	"materials":[
 		{
 			"doubleSided":true,
+			"extensions":{
+				"KHR_materials_specular":{
+					"specularColorFactor":[
+						0.09984662300705513,
+						0.09984662300705513,
+						0.09984662300705513
+					]
+				},
+				"KHR_materials_ior":{
+					"ior":1.4500000476837158
+				}
+			},
 			"name":"Dark",
 			"pbrMetallicRoughness":{
 				"baseColorFactor":[
@@ -39,8 +55,8 @@
 					0.03707793727517128,
 					1
 				],
-				"metallicFactor":0,
-				"roughnessFactor":0.5
+				"metallicFactor":0.6368421316146851,
+				"roughnessFactor":0.9473683834075928
 			}
 		},
 		{

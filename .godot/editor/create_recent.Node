@@ -1,3 +1,5 @@
+DirectionalLight3D
+MeshInstance3D
 Marker3D
 RigidBody3D
 BoneAttachment3D
@@ -5,7 +7,6 @@ CharacterBody3D
 CollisionShape3D
 CollisionPolygon3D
 VehicleBody3D
-MeshInstance3D
 WorldEnvironment
 StaticBody3D
 RayCast3D
