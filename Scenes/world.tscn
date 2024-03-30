@@ -20,7 +20,7 @@ sky = SubResource("Sky_o2trh")
 [node name="Dish" parent="." instance=ExtResource("1_cm4g3")]
 
 [node name="Camera3D" type="Camera3D" parent="Dish"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 9, 6)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 9)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Dish"]
 

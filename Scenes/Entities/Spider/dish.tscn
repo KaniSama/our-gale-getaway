@@ -1,19 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhaodou8csqc3"]
+[gd_scene load_steps=11 format=3 uid="uid://dhaodou8csqc3"]
 
 [ext_resource type="PackedScene" uid="uid://dacwbol6b4esr" path="res://Models/Dish.blend" id="1_0dsom"]
 [ext_resource type="Script" path="res://Scripts/Entities/Spider/start_IK.gd" id="2_js31q"]
 [ext_resource type="Script" path="res://Scripts/Entities/Spider/dish.gd" id="2_serlk"]
+[ext_resource type="Script" path="res://Scripts/Entities/Spider/Lookat_Right.gd" id="3_c1vrf"]
+[ext_resource type="Script" path="res://Scripts/Entities/Spider/Lookat_Back.gd" id="3_tovpa"]
 [ext_resource type="Script" path="res://Scripts/Entities/Spider/step_ray.gd" id="4_tkudv"]
 [ext_resource type="Script" path="res://Scripts/Entities/Spider/step_ik_target.gd" id="4_twtpj"]
 [ext_resource type="Script" path="res://Scripts/Entities/Spider/StepTargetContainer.gd" id="5_y7j16"]
 
-[node name="Dish" instance=ExtResource("1_0dsom")]
+[sub_resource type="SphereMesh" id="SphereMesh_chpyu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_71xww"]
+
+[node name="Dish" node_paths=PackedStringArray("tracker_back", "tracker_right", "lookat_back", "lookat_right") instance=ExtResource("1_0dsom")]
 script = ExtResource("2_serlk")
+tracker_back = NodePath("Armature/Skeleton3D/BackTracking")
+tracker_right = NodePath("Armature/Skeleton3D/RightTracking")
+lookat_back = NodePath("Armature/LookatBack")
+lookat_right = NodePath("Armature/LookatRight")
 
 [node name="Armature" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.409349, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00697395, 0)
 
-[node name="Skeleton3D" parent="Armature" index="0"]
+[node name="LookatBack" type="MeshInstance3D" parent="Armature" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09757, -4)
+mesh = SubResource("SphereMesh_chpyu")
+script = ExtResource("3_tovpa")
+
+[node name="LookatRight" type="MeshInstance3D" parent="Armature" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.09773, 0)
+mesh = SubResource("SphereMesh_71xww")
+script = ExtResource("3_c1vrf")
+
+[node name="Skeleton3D" parent="Armature" index="2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.01292, 2.09894, 0.025835)
 bones/0/rotation = Quaternion(-0.77489, 8.56754e-18, 8.56754e-18, 0.632097)
 bones/1/rotation = Quaternion(0.10097, 1.55893e-25, -1.21163e-17, 0.994889)
@@ -33,8 +53,17 @@ bones/12/rotation = Quaternion(1.27028e-06, -3.46336e-09, 0.00194867, 0.999998)
 bones/13/rotation = Quaternion(1.41863e-06, 6.18452e-11, 0.00220204, 0.999998)
 bones/13/scale = Vector3(1, 1, 1)
 bones/15/rotation = Quaternion(0.77489, -8.56754e-18, -8.56755e-18, 0.632097)
+bones/16/rotation = Quaternion(-4.21469e-08, -0.707107, 4.21468e-08, 0.707107)
+bones/16/scale = Vector3(1, 1, 1)
 
-[node name="LegF_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="10"]
+[node name="BackTracking" type="Marker3D" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.72529e-09)
+rotation_edit_mode = 1
+
+[node name="RightTracking" type="Marker3D" parent="Armature/Skeleton3D" index="1"]
+rotation_edit_mode = 1
+
+[node name="LegF_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="12"]
 process_priority = 1
 root_bone = &"LegF.001"
 tip_bone = &"LegF.IK"
@@ -43,7 +72,7 @@ magnet = Vector3(0, 10, 0)
 target_node = NodePath("../../LegF_IK_Target")
 script = ExtResource("2_js31q")
 
-[node name="LegL_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="11"]
+[node name="LegL_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="13"]
 process_priority = 1
 root_bone = &"LegL.001"
 tip_bone = &"LegL.IK"
@@ -52,7 +81,7 @@ magnet = Vector3(0, 10, 0)
 target_node = NodePath("../../LegL_IK_Target")
 script = ExtResource("2_js31q")
 
-[node name="LegR_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="12"]
+[node name="LegR_IK" type="SkeletonIK3D" parent="Armature/Skeleton3D" index="14"]
 process_priority = 1
 root_bone = &"LegR.001"
 tip_bone = &"LegR.IK"
@@ -61,29 +90,29 @@ magnet = Vector3(0, 10, 0)
 target_node = NodePath("../../LegR_IK_Target")
 script = ExtResource("2_js31q")
 
-[node name="LegF_IK_Target" type="Marker3D" parent="Armature" index="1" node_paths=PackedStringArray("step_target", "adjacent_target")]
+[node name="LegF_IK_Target" type="Marker3D" parent="Armature" index="3" node_paths=PackedStringArray("step_target", "adjacent_target")]
 transform = Transform3D(-1.1437, 0, -9.99857e-08, 0, 1, 0, 9.99857e-08, 0, -1.1437, 0.014158, 0, 2.55499)
 top_level = true
 script = ExtResource("4_twtpj")
 step_target = NodePath("../StepTargetContainer/LegF_Ray/LegF_Step_Target")
 adjacent_target = NodePath("../LegL_IK_Target")
 
-[node name="LegL_IK_Target" type="Marker3D" parent="Armature" index="2" node_paths=PackedStringArray("step_target", "adjacent_target")]
+[node name="LegL_IK_Target" type="Marker3D" parent="Armature" index="4" node_paths=PackedStringArray("step_target", "adjacent_target")]
 transform = Transform3D(-1.1437, 0, -9.99857e-08, 0, 1, 0, 9.99857e-08, 0, -1.1437, 2.20099, 0, -1.24241)
 top_level = true
 script = ExtResource("4_twtpj")
 step_target = NodePath("../StepTargetContainer/LegL_Ray/LegL_Step_Target")
 adjacent_target = NodePath("../LegR_IK_Target")
 
-[node name="LegR_IK_Target" type="Marker3D" parent="Armature" index="3" node_paths=PackedStringArray("step_target", "adjacent_target")]
+[node name="LegR_IK_Target" type="Marker3D" parent="Armature" index="5" node_paths=PackedStringArray("step_target", "adjacent_target")]
 transform = Transform3D(-1.1437, 0, -9.99857e-08, 0, 1, 0, 9.99857e-08, 0, -1.1437, -2.20222, 0, -1.28674)
 top_level = true
 script = ExtResource("4_twtpj")
 step_target = NodePath("../StepTargetContainer/LegR_Ray/LegR_Step_Target")
 adjacent_target = NodePath("../LegF_IK_Target")
 
-[node name="StepTargetContainer" type="Node3D" parent="Armature" index="4"]
-transform = Transform3D(0.914595, 0, 0, 0, 1, 0, 0, 0, 0.914595, 0, 0.40882, 0)
+[node name="StepTargetContainer" type="Node3D" parent="Armature" index="6"]
+transform = Transform3D(0.914595, 0, 0, 0, 1, 0, 0, 0, 0.914595, 0, -0.0021899, 0)
 script = ExtResource("5_y7j16")
 
 [node name="LegF_Ray" type="RayCast3D" parent="Armature/StepTargetContainer" index="0" node_paths=PackedStringArray("step_target")]

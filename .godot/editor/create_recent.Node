@@ -1,8 +1,10 @@
+MeshInstance3D
+Marker3D
+BoneAttachment3D
 WorldEnvironment
 StaticBody3D
 CollisionShape3D
 RayCast3D
 Node3D
 Camera3D
-Marker3D
 SkeletonIK3D

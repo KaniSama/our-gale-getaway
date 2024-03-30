@@ -1,2 +1,2 @@
-﻿60330
+﻿60369
 C:/Program Files/Godot/4.2/mono/Godot_v4.2-stable_mono_win64.exe

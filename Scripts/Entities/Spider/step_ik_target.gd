@@ -33,7 +33,7 @@ func step():
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", halfway + owner.basis.y, .1)
-	tween.tween_property(self, "global_position", target_pos, .1)
+	tween.tween_property(self, "global_position", target_pos, .07)
 	
 	tween.tween_callback(func(): is_stepping = false)
 
