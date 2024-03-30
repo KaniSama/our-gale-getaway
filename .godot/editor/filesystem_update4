@@ -1,5 +1,5 @@
-res://Scenes/Entities/Spider/dish.tscn
 res://Scenes/world.tscn
-res://Scripts/Entities/Spider/Lookat_Back.gd
-res://Scripts/Entities/Spider/Lookat_Right.gd
+res://Scenes/Entities/Spider/dish.tscn
+res://Scenes/Modules/house.tscn
 res://Scripts/Entities/Spider/dish.gd
+res://Scripts/Entities/Spider/StepTargetContainer.gd

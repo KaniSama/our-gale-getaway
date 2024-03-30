@@ -1,6 +1,6 @@
+RigidBody3D
 BoneAttachment3D
 CharacterBody3D
-RigidBody3D
 CollisionShape3D
 CollisionPolygon3D
 VehicleBody3D

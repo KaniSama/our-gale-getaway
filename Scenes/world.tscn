@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo72u712x0vm1"]
+[gd_scene load_steps=7 format=3 uid="uid://bo72u712x0vm1"]
 
 [ext_resource type="PackedScene" uid="uid://dhaodou8csqc3" path="res://Scenes/Entities/Spider/dish.tscn" id="1_cm4g3"]
+[ext_resource type="PackedScene" uid="uid://d3hsrdlajaotx" path="res://Scenes/Modules/house.tscn" id="2_ih6xq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5das"]
 size = Vector3(13, 1, 12)
@@ -30,3 +31,15 @@ environment = SubResource("Environment_akm0w")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5, 9)
+
+[node name="House" parent="." instance=ExtResource("2_ih6xq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99903, 0)
+
+[node name="House2" parent="." instance=ExtResource("2_ih6xq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364276, 3.99903, 0)
+
+[node name="House3" parent="." instance=ExtResource("2_ih6xq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364276, 3.99903, -0.432875)
+
+[node name="House4" parent="." instance=ExtResource("2_ih6xq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364276, 4.38171, -0.432875)
