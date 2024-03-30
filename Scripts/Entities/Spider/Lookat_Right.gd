@@ -1,13 +1,13 @@
 extends MeshInstance3D
 
-@onready var spd = .5
+@onready var spd = .3
 
 ########################################### OVERRIDES
 func _____OVERRIDES(): pass
 
 
 func _process(delta):
-	var dir = Vector3(0, Input.get_axis("np_6", "np_4"), 0).normalized()
+	var dir = Vector3(0, Input.get_axis("np_4", "np_6"), 0).normalized()
 	position += dir * spd
 
 

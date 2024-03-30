@@ -1,6 +1,6 @@
 extends MeshInstance3D
 
-@onready var spd = .5
+@onready var spd = .3
 
 ########################################### OVERRIDES
 func _____OVERRIDES(): pass
