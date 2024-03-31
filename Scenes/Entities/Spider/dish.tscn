@@ -177,3 +177,5 @@ step_target = NodePath("LegR_Step_Target")
 
 [node name="LegR_Step_Target" type="Marker3D" parent="Armature/StepTargetContainer/LegR_Ray" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.87194, 0)
+
+[connection signal="body_exited" from="Armature/Skeleton3D/Collisions/ModuleArea" to="." method="_on_module_area_body_exited"]

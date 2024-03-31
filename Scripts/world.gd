@@ -1,8 +1,11 @@
 extends Node3D
 
 @onready var cam = $Player/Camera3D
+@onready var cam_edit_mode = $Player/Camera3DEditMode
+@onready var cam_offset : Vector3
 @onready var dish = $Player/Dish
 @onready var init_cam_pos : Vector3
+@onready var init_cam_rots : Vector3
 var cam_shake = {
 	"frames" : 0,
 	"intensity" : .01
@@ -43,10 +46,13 @@ func _____OVERRIDES(): pass
 
 func _ready():
 	init_cam_pos = cam.global_position
+	init_cam_rots = cam.global_rotation
+	cam_offset = cam_edit_mode.global_position - cam.global_position
 
 
 func _physics_process(delta):
-	cam.global_position += \
+	if dish.state != dish.states.editing:
+		cam.global_position += \
 		((dish.global_position + init_cam_pos) - \
 		cam.global_position) * .05 + \
 		Vector3(
@@ -54,6 +60,25 @@ func _physics_process(delta):
 			0,
 			randf_range(-1, 1) * cam_shake["intensity"] * cam_shake["frames"]
 		)
+		cam.global_rotation = lerp(
+			cam.global_rotation,
+			init_cam_rots,
+			.15
+		)
+		
+		cam_edit_mode.global_position = cam.global_position + cam_offset
+	else:
+		cam.global_position = lerp(
+			cam.global_position,
+			dish.global_position + init_cam_pos + cam_offset,
+			.33
+		)
+		cam.global_rotation = lerp(
+			cam.global_rotation,
+			cam_edit_mode.global_rotation,
+			.33
+		)
+	
 	
 	cam_shake["frames"] = clamp(cam_shake["frames"] - 1, 0, 1000)
 	

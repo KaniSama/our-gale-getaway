@@ -9,3 +9,5 @@ res://Scripts/resource_parent.gd
 res://Scenes/Resources/res_wood.tscn
 res://Scripts/Entities/Spider/dish.gd
 res://Scenes/wind.tscn
+res://Scripts/Modules/house.gd
+res://Scripts/world.gd

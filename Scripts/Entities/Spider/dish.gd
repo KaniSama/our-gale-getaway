@@ -1,6 +1,7 @@
 extends Node3D
 
 signal editing_mode_entered
+signal gathering_mode_entered
 
 
 @onready var modules : Array [ Node3D ]
@@ -30,6 +31,8 @@ var state : String = states.standing :
 		match state:
 			states.editing:
 				emit_signal("editing_mode_entered")
+			states.gathering:
+				emit_signal("gathering_mode_entered")
 
 
 @export var max_move_speed : float = 5.0
@@ -78,6 +81,8 @@ func _physics_process(delta):
 				state = states.gathering
 			states.gathering:
 				state = states.standing
+	
+	calculate_population()
 
 
 
@@ -146,6 +151,16 @@ func handle_movement(delta):
 		_new_body_pos = _new_body_pos.clamp(_lowered, init_body_pos)
 		skeleton.set_bone_pose_position(body, _new_body_pos)
 
+
+func calculate_population():
+	var _pop = modules.filter(func(x): return x is House).size()
+	resources.population = 1 + _pop
+
+func add_module(module : Node3D):
+	if module not in modules:
+		modules.append(module)
+
+
 func exit_editing_mode():
 	state = states.standing
 
@@ -157,3 +172,7 @@ func _____SIGNALS(): pass
 
 func _on_child_key_pressed():
 	pass
+
+
+func _on_module_area_body_exited(body):
+	modules.erase(body)

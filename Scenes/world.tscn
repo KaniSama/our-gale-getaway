@@ -219,6 +219,10 @@ texture = ExtResource("13_eor3v")
 layout_mode = 2
 text = "Edit Mode"
 
+[node name="Camera3DEditMode" type="Camera3D" parent="Player"]
+transform = Transform3D(0.5, -0.612373, 0.612372, 0, 0.707107, 0.707107, -0.866025, -0.353553, 0.353553, 1.87532, 3.85573, 1.04569)
+size = 16.888
+
 [node name="Dish" parent="Player" instance=ExtResource("1_cm4g3")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Player/Dish"]
