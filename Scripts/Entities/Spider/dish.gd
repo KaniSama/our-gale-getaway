@@ -1,5 +1,11 @@
 extends Node3D
 
+
+@onready var population : int
+@onready var modules : Array [ Node3D ]
+var editable : bool = false
+
+
 @export var max_move_speed : float = 5.0
 @export var acceleration : float = .05
 var move_speed : float = 0
@@ -12,11 +18,12 @@ var velocity : Vector3 = Vector3.ZERO
 @export var lookat_right : Node3D
 var dish_rotation : Vector2 = Vector2.ZERO
 const max_rots = .5
+@onready var init_body_rots : Quaternion
 
 @onready var skeleton = $Armature/Skeleton3D
 @onready var collider = $Armature/Skeleton3D/Collisions/Collider
+@onready var module_area = $Armature/Skeleton3D/Collisions/ModuleArea
 
-@onready var init_body_rots : Quaternion
 
 ########################################### OVERRIDES
 func _____OVERRIDES(): pass
@@ -29,8 +36,8 @@ func _ready():
 
 func _physics_process(delta):
 	
-	
 	handle_movement(delta)
+	editable = velocity.length() >= .01
 
 
 
@@ -63,7 +70,8 @@ func handle_movement(delta):
 	tracker_back.look_at(lookat_back.global_position, Vector3.UP)
 	tracker_right.look_at(lookat_right.global_position, Vector3.UP)
 	
-	var new_rots = (Quaternion.from_euler(tracker_back.rotation) * Quaternion.from_euler(tracker_right.rotation)).normalized()
+	var new_rots = (Quaternion.from_euler(tracker_back.rotation) * \
+		Quaternion.from_euler(tracker_right.rotation)).normalized()
 	
 	# Apply rotation
 	skeleton.set_bone_pose_rotation(body, new_rots)

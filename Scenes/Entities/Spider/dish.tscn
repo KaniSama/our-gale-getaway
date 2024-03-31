@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhaodou8csqc3"]
+[gd_scene load_steps=10 format=3 uid="uid://dhaodou8csqc3"]
 
 [ext_resource type="PackedScene" uid="uid://dacwbol6b4esr" path="res://Models/Dish.blend" id="1_0dsom"]
 [ext_resource type="Script" path="res://Scripts/Entities/Spider/start_IK.gd" id="2_js31q"]
@@ -13,6 +13,9 @@ points = PackedVector3Array(0, -0.0454755, -1.19942, 0, 0.0713007, -1.15786, 0.4
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5vwv3"]
 height = 0.270723
 radius = 0.984807
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rugco"]
+radius = 1.18343
 
 [node name="Dish" node_paths=PackedStringArray("tracker_back", "tracker_right", "lookat_back", "lookat_right") instance=ExtResource("1_0dsom")]
 script = ExtResource("2_serlk")
@@ -67,6 +70,15 @@ shape = SubResource("ConvexPolygonShape3D_lhg2t")
 [node name="CollisionFloor" type="CollisionShape3D" parent="Armature/Skeleton3D/Collisions/Collider" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.133842, 0)
 shape = SubResource("CylinderShape3D_5vwv3")
+
+[node name="ModuleArea" type="Area3D" parent="Armature/Skeleton3D/Collisions" index="1"]
+transform = Transform3D(7.10543e-15, 1.3411e-07, 1, 1.38556e-13, 1, -1.04308e-07, -1, 1.38556e-13, 0, -7.45058e-08, 0, 0)
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/Collisions/ModuleArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.893983, 0)
+shape = SubResource("CylinderShape3D_rugco")
 
 [node name="LookatBack" type="Marker3D" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(-0.14, 0, 1.22392e-08, 0, 0.14, 0, -1.22392e-08, 0, -0.14, 0.013, 0, 4.026)

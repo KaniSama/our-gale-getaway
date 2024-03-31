@@ -1,3 +1,5 @@
+CollisionShape3D
+Area3D
 ColorRect
 CanvasLayer
 AnimatedSprite3D
@@ -6,10 +8,7 @@ DirectionalLight3D
 SpotLight3D
 MeshInstance3D
 FogVolume
-CollisionShape3D
-Area3D
 Marker3D
 RigidBody3D
 BoneAttachment3D
 CharacterBody3D
-CollisionPolygon3D
