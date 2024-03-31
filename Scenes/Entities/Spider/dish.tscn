@@ -216,9 +216,12 @@ spread = 180.0
 flatness = 1.0
 gravity = Vector3(0, 0, 0)
 initial_velocity_min = 9.09
-initial_velocity_max = 9.09
+initial_velocity_max = 14.79
+linear_accel_min = -39.17
+linear_accel_max = -24.79
 scale_amount_min = 0.0
 
+[connection signal="body_entered" from="Armature/Skeleton3D/Collisions/ModuleArea" to="." method="_on_module_area_body_entered"]
 [connection signal="body_exited" from="Armature/Skeleton3D/Collisions/ModuleArea" to="." method="_on_module_area_body_exited"]
 [connection signal="area_entered" from="Armature/Skeleton3D/Collisions/ResourceCheckerArea" to="." method="_on_resource_area_area_entered"]
 [connection signal="area_exited" from="Armature/Skeleton3D/Collisions/ResourceCheckerArea" to="." method="_on_resource_area_area_exited"]

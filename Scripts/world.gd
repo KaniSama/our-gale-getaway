@@ -10,7 +10,9 @@ var cam_shake = {
 	"frames" : 0,
 	"intensity" : .01
 }
+@onready var bulding_menu = $Player/Camera3D/CanvasLayer/HUD/BuildingMenu
 @onready var resource_grid = $Player/Camera3D/CanvasLayer/HUD/ResourceGrid
+@onready var stats_grid = $Player/Camera3D/CanvasLayer/HUD/StatsGrid
 @onready var gather_progress_bar = $Player/Camera3D/CanvasLayer/HUD/ResourceGatherProgressBar
 
 
@@ -82,11 +84,12 @@ func _physics_process(delta):
 		)
 	
 	gather_progress_bar.visible = dish.state == dish.states.gathering
+	bulding_menu.visible = dish.state == dish.states.editing
 	
 	cam_shake["frames"] = clamp(cam_shake["frames"] - 1, 0, 1000)
 	
-	if (Input.is_action_just_pressed("ui_accept")):
-		shake_cam(15)
+	if (dish.state == dish.states.gathering):
+		shake_cam(1)
 
 
 
@@ -115,6 +118,9 @@ func _on_dish_resources_updated(_resources : Dictionary):
 		)
 		if __res:
 			__res.text = str(_resources[__i])
+	
+	stats_grid.find_child("PopulationLabel").text = "Population: " + \
+		str((_resources.population - 1) * 10 + 1)
 
 func _on_dish_gather_progress_updated(_gather_progress):
 	gather_progress_bar.value = _gather_progress

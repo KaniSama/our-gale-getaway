@@ -7,3 +7,6 @@ res://Scenes/resource.tscn
 res://Scenes/Resources/res_gold.tscn
 res://Scenes/Resources/res_wood.tscn
 res://Scenes/wind.tscn
+res://Scripts/resource.gd
+res://Scenes/Resources/res_stone.tscn
+res://Scripts/world.gd

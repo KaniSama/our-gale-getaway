@@ -40,12 +40,12 @@ void fragment() {
 	}
 	
 	// gamma, contrast & saturation:
-	if (enable_col_adjust) {
-		base_col.rgb = pow(base_col.rgb, vec3(1.0 / gamma));
-		base_col.rgb = (base_col.rgb - 0.5) * contrast + 0.5;
-		float gray = dot(base_col.rgb, vec3(0.33,0.33,00.33));
-		base_col.rgb = mix(vec3(gray), base_col.rgb, saturation);
-	}
+	//if (enable_col_adjust) {
+		//base_col.rgb = pow(base_col.rgb, vec3(1.0 / gamma));
+		//base_col.rgb = (base_col.rgb - 0.5) * contrast + 0.5;
+		//float gray = dot(base_col.rgb, vec3(0.33,0.33,00.33));
+		//base_col.rgb = mix(vec3(gray), base_col.rgb, saturation);
+	//}
 	
 	// Output
 	COLOR = base_col;

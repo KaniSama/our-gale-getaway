@@ -155,7 +155,8 @@ func handle_movement(delta):
 		
 		# Apply rotation
 		skeleton.set_bone_pose_rotation(body, new_rots)
-		
+	
+	if state in [states.walking, states.editing, states.standing]:
 		# -- Cancel body lowering when no longer gathering resource
 		var _new_body_pos = skeleton.get_bone_pose_position(body)
 		#_new_body_pos += (init_body_pos - _new_body_pos) * .05
@@ -187,6 +188,8 @@ func update_resources():
 func calculate_population():
 	var _pop = modules.filter(func(x): return x is House).size()
 	resources.population = 1 + _pop
+	
+	update_resources()
 
 func add_module(module : Node3D):
 	if module not in modules:
@@ -202,6 +205,8 @@ func exit_editing_mode():
 func _____SIGNALS(): pass
 
 
+func _on_module_area_body_entered(body):
+	modules.append(body)
 func _on_module_area_body_exited(body):
 	modules.erase(body)
 

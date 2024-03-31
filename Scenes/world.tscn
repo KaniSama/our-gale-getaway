@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bo72u712x0vm1"]
+[gd_scene load_steps=38 format=3 uid="uid://bo72u712x0vm1"]
 
 [ext_resource type="PackedScene" uid="uid://dhaodou8csqc3" path="res://Scenes/Entities/Spider/dish.tscn" id="1_cm4g3"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_oo3gg"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://xwlmv2yrcwyh" path="res://Models/textures/Controls/switch_buttons_up_outline.png" id="13_eor3v"]
 [ext_resource type="PackedScene" uid="uid://dfcaume66knl5" path="res://Scenes/Resources/res_gold.tscn" id="14_akwja"]
 [ext_resource type="PackedScene" uid="uid://dg2gimxxr64g1" path="res://Scenes/Resources/res_wood.tscn" id="15_aw60i"]
+[ext_resource type="PackedScene" uid="uid://brgpm8g10wbog" path="res://Scenes/Resources/res_stone.tscn" id="22_xru8a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ad1ul"]
 shader = ExtResource("2_eyx6t")
@@ -226,6 +227,7 @@ layout_mode = 2
 text = "Edit Mode"
 
 [node name="BuildingMenu" type="VBoxContainer" parent="Player/Camera3D/CanvasLayer/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -376,6 +378,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1214, -1.90735e-06, 19.441
 
 [node name="ResWood19" parent="Res" instance=ExtResource("15_aw60i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4719, -1.90735e-06, -13.4244)
+
+[node name="ResStone" parent="Res" instance=ExtResource("22_xru8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.27244, -1.90735e-06, -2.24786)
+
+[node name="ResStone2" parent="Res" instance=ExtResource("22_xru8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.85525, -1.90735e-06, -1.71846)
+
+[node name="ResStone3" parent="Res" instance=ExtResource("22_xru8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.31608, -1.90735e-06, -3.29158)
+
+[node name="ResStone4" parent="Res" instance=ExtResource("22_xru8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.04739, -9.53674e-07, -3.81775)
+
+[node name="ResStone5" parent="Res" instance=ExtResource("22_xru8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10448, -9.53674e-07, 14.4528)
+
+[node name="ResStone6" parent="Res" instance=ExtResource("22_xru8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.406663, 9.53674e-07, 13.7346)
+
+[node name="ResStone7" parent="Res" instance=ExtResource("22_xru8a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.40666, 9.53674e-07, 9.73457)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_akm0w")
