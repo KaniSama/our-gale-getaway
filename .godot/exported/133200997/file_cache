@@ -1,4 +1,9 @@
-res://Scenes/Entities/Spider/dish.tscn::ec93a2143fd393fb4b4b794fa25e30da::1711832867::res://.godot/exported/133200997/export-1bad5973105f3779b62ee7ec78229688-dish.scn
-res://Scenes/world.tscn::74bb768ca6248722932f8772936b9f5a::1711832867::res://.godot/exported/133200997/export-0271e18ecf37a36b455ad0b215994549-world.scn
-res://Scenes/Modules/house.tscn::d6779b57219e5ffe98cb41b18782a71f::1711832867::res://.godot/exported/133200997/export-bb8ad110f6f5c80f46e6d79ebeb91c9f-house.scn
-res://Models/textures/WindSprite/wind_sprite_frames.tres::c938d2dfa3a1e8d8903a1b65dd72c7a3::1711832156::res://.godot/exported/133200997/export-a61953b61a671b30571cadcc337b8578-wind_sprite_frames.res
+res://Scenes/Entities/Spider/dish.tscn::8d6fa4de5d21cd4b9f6d486b82bb3b9e::1711901022::res://.godot/exported/133200997/export-1bad5973105f3779b62ee7ec78229688-dish.scn
+res://Scenes/world.tscn::cab55caa5f595b7818d84e1160215e82::1711901022::res://.godot/exported/133200997/export-0271e18ecf37a36b455ad0b215994549-world.scn
+res://Scenes/Modules/house.tscn::90b5b1a6ab5d811e986b7045c8b9318c::1711901022::res://.godot/exported/133200997/export-bb8ad110f6f5c80f46e6d79ebeb91c9f-house.scn
+res://Models/textures/WindSprite/wind_sprite_frames.tres::e63e1c62de1b9c0d8e9b15b47ca37822::1711837655::res://.godot/exported/133200997/export-a61953b61a671b30571cadcc337b8578-wind_sprite_frames.res
+res://Scenes/Resources/res_wood.tscn::306b77b19d187fe1004af839efe9a1cb::1711901023::res://.godot/exported/133200997/export-ef552ce44769beb58c8aa64a54d80337-res_wood.scn
+res://Scenes/Resources/res_gold.tscn::34da751702772632827dbbd4a44be654::1711901023::res://.godot/exported/133200997/export-fa497252fecb945df93859a5c6dfc336-res_gold.scn
+res://Scenes/Resources/res_iron.tscn::9012a52787f367f4b71ca3905c37e111::1711889498::res://.godot/exported/133200997/export-987d38c3cd0f70df232e46cce268e69f-res_iron.scn
+res://Scenes/resource.tscn::f788db6de2c639e42c130d8d9115c6d0::1711901023::res://.godot/exported/133200997/export-cc592e38aed28f7ee73e35229bb9847e-resource.scn
+res://Scenes/wind.tscn::792041017b630293efe1d13c5bf58fb4::1711871860::res://.godot/exported/133200997/export-7db7469fdf725f464c82d24642874260-wind.scn

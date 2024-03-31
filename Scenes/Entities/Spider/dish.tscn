@@ -73,6 +73,8 @@ shape = SubResource("CylinderShape3D_5vwv3")
 
 [node name="ModuleArea" type="Area3D" parent="Armature/Skeleton3D/Collisions" index="1"]
 transform = Transform3D(7.10543e-15, 1.3411e-07, 1, 1.38556e-13, 1, -1.04308e-07, -1, 1.38556e-13, 0, -7.45058e-08, 0, 0)
+collision_layer = 0
+collision_mask = 4
 input_ray_pickable = false
 monitorable = false
 
