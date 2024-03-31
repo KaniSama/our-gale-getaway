@@ -1,7 +1,7 @@
+GridContainer
 Node3D
 Label
 TextureRect
-GridContainer
 VBoxContainer
 Control
 CollisionShape3D
