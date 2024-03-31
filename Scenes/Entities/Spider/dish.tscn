@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhaodou8csqc3"]
+[gd_scene load_steps=13 format=3 uid="uid://dhaodou8csqc3"]
 
 [ext_resource type="PackedScene" uid="uid://dacwbol6b4esr" path="res://Models/Dish.blend" id="1_0dsom"]
 [ext_resource type="Script" path="res://Scripts/Entities/Spider/start_IK.gd" id="2_js31q"]
@@ -17,8 +17,27 @@ radius = 0.984807
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rugco"]
 radius = 1.18343
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nk0h3"]
+height = 0.771112
+radius = 1.14528
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e347i"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 1, 1, 0.647059)
+disable_receive_shadows = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_rta74"]
+material = SubResource("StandardMaterial3D_e347i")
+radial_segments = 8
+rings = 4
+
 [node name="Dish" node_paths=PackedStringArray("tracker_back", "tracker_right", "lookat_back", "lookat_right") instance=ExtResource("1_0dsom")]
 script = ExtResource("2_serlk")
+gather_speed = 0.016
 tracker_back = NodePath("Armature/Skeleton3D/BackTracking")
 tracker_right = NodePath("Armature/Skeleton3D/RightTracking")
 lookat_back = NodePath("Armature/Skeleton3D/LookatBack")
@@ -81,6 +100,14 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/Collisions/ModuleArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.893983, 0)
 shape = SubResource("CylinderShape3D_rugco")
+
+[node name="ResourceCheckerArea" type="Area3D" parent="Armature/Skeleton3D/Collisions" index="2"]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/Collisions/ResourceCheckerArea" index="0"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, -7.6233e-21, 0, -1.43996e-20, 1, 0, -0.376108, 0)
+shape = SubResource("CylinderShape3D_nk0h3")
 
 [node name="LookatBack" type="Marker3D" parent="Armature/Skeleton3D" index="1"]
 transform = Transform3D(-0.14, 0, 1.22392e-08, 0, 0.14, 0, -1.22392e-08, 0, -0.14, 0.013, 0, 4.026)
@@ -178,4 +205,20 @@ step_target = NodePath("LegR_Step_Target")
 [node name="LegR_Step_Target" type="Marker3D" parent="Armature/StepTargetContainer/LegR_Ray" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.87194, 0)
 
+[node name="Particles" type="CPUParticles3D" parent="Armature" index="5"]
+emitting = false
+amount = 68
+lifetime = 0.33
+randomness = 1.0
+lifetime_randomness = 0.2
+mesh = SubResource("SphereMesh_rta74")
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 9.09
+initial_velocity_max = 9.09
+scale_amount_min = 0.0
+
 [connection signal="body_exited" from="Armature/Skeleton3D/Collisions/ModuleArea" to="." method="_on_module_area_body_exited"]
+[connection signal="area_entered" from="Armature/Skeleton3D/Collisions/ResourceCheckerArea" to="." method="_on_resource_area_area_entered"]
+[connection signal="area_exited" from="Armature/Skeleton3D/Collisions/ResourceCheckerArea" to="." method="_on_resource_area_area_exited"]

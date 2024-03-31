@@ -1,4 +1,5 @@
 extends Node3D
+class_name ResourceArea
 
 @export var mesh_blend : PackedScene
 var resource_type : String = ""

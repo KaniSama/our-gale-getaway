@@ -2,6 +2,8 @@ extends Node3D
 
 signal editing_mode_entered
 signal gathering_mode_entered
+signal resources_updated(_resources : Dictionary)
+signal gather_progress_updated(_gather_progress : float)
 
 
 @onready var modules : Array [ Node3D ]
@@ -16,6 +18,17 @@ signal gathering_mode_entered
 		return resources
 	set(value):
 		resources = value
+		emit_signal("resources_updated", resources)
+@onready var current_resource : Node3D = null
+@onready var current_resources_count : int = 0
+@export var gather_speed : float = .1
+var gather_progress : float = 0 :
+	get:
+		return gather_progress
+	set(value):
+		gather_progress = value
+		emit_signal("gather_progress_updated", gather_progress)
+@onready var particles = $Armature/Particles
 
 const states : Dictionary = {
 	"standing" : "standing",
@@ -68,6 +81,7 @@ func _ready():
 func _physics_process(delta):
 	
 	handle_movement(delta)
+	calculate_population()
 	
 	if Input.is_action_just_pressed("mv_edit_mode"):
 		match state:
@@ -82,7 +96,12 @@ func _physics_process(delta):
 			states.gathering:
 				state = states.standing
 	
-	calculate_population()
+	if state == states.gathering:
+		gather_resources(delta)
+		if current_resources_count > 0:
+			particles.emitting = true
+	else:
+		particles.emitting = false
 
 
 
@@ -151,6 +170,19 @@ func handle_movement(delta):
 		_new_body_pos = _new_body_pos.clamp(_lowered, init_body_pos)
 		skeleton.set_bone_pose_position(body, _new_body_pos)
 
+func gather_resources(delta):
+	if current_resource != null:
+		var _resource_type = current_resource.resource_type
+		
+		gather_progress += gather_speed * resources.population
+		
+		if gather_progress >= 1.0:
+			gather_progress = 0
+			resources[_resource_type] += 1
+			update_resources()
+
+func update_resources():
+	resources = resources
 
 func calculate_population():
 	var _pop = modules.filter(func(x): return x is House).size()
@@ -170,9 +202,16 @@ func exit_editing_mode():
 func _____SIGNALS(): pass
 
 
-func _on_child_key_pressed():
-	pass
-
-
 func _on_module_area_body_exited(body):
 	modules.erase(body)
+
+
+func _on_resource_area_area_entered(area):
+	if area is ResourceArea:
+		current_resource = area.get_parent_node_3d()
+		current_resources_count += 1
+func _on_resource_area_area_exited(area):
+	if area is ResourceArea:
+		current_resources_count -= 1
+		if current_resources_count <= 0:
+			current_resource = null

@@ -10,6 +10,8 @@ var cam_shake = {
 	"frames" : 0,
 	"intensity" : .01
 }
+@onready var resource_grid = $Player/Camera3D/CanvasLayer/HUD/ResourceGrid
+@onready var gather_progress_bar = $Player/Camera3D/CanvasLayer/HUD/ResourceGatherProgressBar
 
 
 const resource_variants : Dictionary = {
@@ -79,6 +81,7 @@ func _physics_process(delta):
 			.33
 		)
 	
+	gather_progress_bar.visible = dish.state == dish.states.gathering
 	
 	cam_shake["frames"] = clamp(cam_shake["frames"] - 1, 0, 1000)
 	
@@ -105,5 +108,13 @@ func get_resource_icons() -> Dictionary:
 func _____SIGNALS(): pass
 
 
-func _on_child_key_pressed():
-	pass
+func _on_dish_resources_updated(_resources : Dictionary):
+	for __i in _resources.keys():
+		var __res = resource_grid.find_child(
+			__i.capitalize() + "Label"
+		)
+		if __res:
+			__res.text = str(_resources[__i])
+
+func _on_dish_gather_progress_updated(_gather_progress):
+	gather_progress_bar.value = _gather_progress

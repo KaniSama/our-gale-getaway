@@ -25,6 +25,10 @@ window/stretch/scale_mode="integer"
 
 project/assembly_name="Mini Jam 155 Wind"
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 np_8={

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bo72u712x0vm1"]
+[gd_scene load_steps=37 format=3 uid="uid://bo72u712x0vm1"]
 
 [ext_resource type="PackedScene" uid="uid://dhaodou8csqc3" path="res://Scenes/Entities/Spider/dish.tscn" id="1_cm4g3"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_oo3gg"]
@@ -26,6 +26,12 @@
 shader = ExtResource("2_eyx6t")
 shader_parameter/enable_col_adjust = true
 shader_parameter/enable_aberation = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vk71y"]
+bg_color = Color(0.0823529, 0.12549, 0.203922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_peyr0"]
+bg_color = Color(0.482353, 0.858824, 0.909804, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5das"]
 size = Vector3(13, 1, 12)
@@ -119,6 +125,14 @@ offset_bottom = -8.0
 grow_vertical = 2
 columns = 2
 
+[node name="WoodTex" type="TextureRect" parent="Player/Camera3D/CanvasLayer/HUD/ResourceGrid"]
+layout_mode = 2
+texture = ExtResource("6_b4sl3")
+
+[node name="WoodLabel" type="Label" parent="Player/Camera3D/CanvasLayer/HUD/ResourceGrid"]
+layout_mode = 2
+text = "Wood"
+
 [node name="StoneTex" type="TextureRect" parent="Player/Camera3D/CanvasLayer/HUD/ResourceGrid"]
 layout_mode = 2
 texture = ExtResource("3_baiwf")
@@ -142,14 +156,6 @@ texture = ExtResource("5_5hyig")
 [node name="GoldLabel" type="Label" parent="Player/Camera3D/CanvasLayer/HUD/ResourceGrid"]
 layout_mode = 2
 text = "Gold"
-
-[node name="WoodTex" type="TextureRect" parent="Player/Camera3D/CanvasLayer/HUD/ResourceGrid"]
-layout_mode = 2
-texture = ExtResource("6_b4sl3")
-
-[node name="WoodLabel" type="Label" parent="Player/Camera3D/CanvasLayer/HUD/ResourceGrid"]
-layout_mode = 2
-text = "Wood"
 
 [node name="StatsGrid" type="GridContainer" parent="Player/Camera3D/CanvasLayer/HUD"]
 layout_direction = 2
@@ -218,6 +224,49 @@ texture = ExtResource("13_eor3v")
 [node name="ControlLabel3" type="Label" parent="Player/Camera3D/CanvasLayer/HUD/ControlsGrid"]
 layout_mode = 2
 text = "Edit Mode"
+
+[node name="BuildingMenu" type="VBoxContainer" parent="Player/Camera3D/CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -171.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -166.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="Player/Camera3D/CanvasLayer/HUD/BuildingMenu"]
+layout_mode = 2
+text = "Build Modules:"
+
+[node name="PanelContainer" type="Button" parent="Player/Camera3D/CanvasLayer/HUD/BuildingMenu"]
+layout_mode = 2
+text = "House (20 Wood, 10 Stone)"
+
+[node name="PanelContainer2" type="Button" parent="Player/Camera3D/CanvasLayer/HUD/BuildingMenu"]
+layout_mode = 2
+text = "Turret (20 Iron, 10 Gold)"
+
+[node name="ResourceGatherProgressBar" type="ProgressBar" parent="Player/Camera3D/CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 444.0
+offset_top = -98.0
+offset_right = -444.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_vk71y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_peyr0")
+max_value = 1.0
+show_percentage = false
 
 [node name="Camera3DEditMode" type="Camera3D" parent="Player"]
 transform = Transform3D(0.5, -0.612373, 0.612372, 0, 0.707107, 0.707107, -0.866025, -0.353553, 0.353553, 1.87532, 3.85573, 1.04569)
@@ -371,3 +420,6 @@ skeleton = NodePath("../..")
 transform = Transform3D(1.44652, 0, 0, 0, 1, 0, 0, 0, 1.44652, -7.05544, 22, 3.83556)
 mesh = SubResource("TorusMesh_jffev")
 skeleton = NodePath("../..")
+
+[connection signal="gather_progress_updated" from="Player/Dish" to="." method="_on_dish_gather_progress_updated"]
+[connection signal="resources_updated" from="Player/Dish" to="." method="_on_dish_resources_updated"]
