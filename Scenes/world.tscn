@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bo72u712x0vm1"]
+[gd_scene load_steps=29 format=3 uid="uid://bo72u712x0vm1"]
 
 [ext_resource type="PackedScene" uid="uid://dhaodou8csqc3" path="res://Scenes/Entities/Spider/dish.tscn" id="1_cm4g3"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_oo3gg"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://q284c1bw8qhw" path="res://Scenes/wind.tscn" id="7_tsoi2"]
 [ext_resource type="PackedScene" uid="uid://04rr44j7r5pf" path="res://Scenes/Resources/res_iron.tscn" id="8_3oqe5"]
 [ext_resource type="PackedScene" uid="uid://dfcaume66knl5" path="res://Scenes/Resources/res_gold.tscn" id="14_akwja"]
+[ext_resource type="PackedScene" uid="uid://dg2gimxxr64g1" path="res://Scenes/Resources/res_wood.tscn" id="15_aw60i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ad1ul"]
 shader = ExtResource("2_eyx6t")
@@ -211,6 +212,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9448, 0, 6.9859)
 
 [node name="ResGold2" parent="Res" instance=ExtResource("14_akwja")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58591, 0, 7.54532)
+
+[node name="ResWood" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.20393, 0, 8.21339)
+
+[node name="ResWood2" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7281, 9.53674e-07, 3.4443)
+
+[node name="ResWood3" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.93107, 0, 9.13669)
+
+[node name="ResWood4" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8593, -3.8147e-06, 8.83974)
+
+[node name="ResWood5" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5362, -1.90735e-06, 11.1282)
+
+[node name="ResWood6" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3207, -1.90735e-06, 12.2077)
+
+[node name="ResWood7" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4175, 0, 9.80028)
+
+[node name="ResWood8" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.52484, 0, 10.7076)
+
+[node name="ResWood9" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.265, 0, 3.1908)
+
+[node name="ResWood10" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.265, 0, 1.1908)
+
+[node name="ResWood11" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.67286, -3.8147e-06, -5.98516)
+
+[node name="ResWood12" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4728, -3.8147e-06, -6.73108)
+
+[node name="ResWood13" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.21976, -3.8147e-06, -7.65726)
+
+[node name="ResWood14" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27822, -3.8147e-06, -5.50149)
+
+[node name="ResWood15" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.27822, -3.8147e-06, -4.50149)
+
+[node name="ResWood16" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1095, -1.90735e-06, 16.9083)
+
+[node name="ResWood17" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0113, -1.90735e-06, 17.7796)
+
+[node name="ResWood18" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1214, -1.90735e-06, 19.4419)
+
+[node name="ResWood19" parent="Res" instance=ExtResource("15_aw60i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4719, -1.90735e-06, -13.4244)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_akm0w")

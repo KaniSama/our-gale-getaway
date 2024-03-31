@@ -53,8 +53,8 @@ func _____HELPERS(): pass
 
 func handle_movement(delta):
 	# Handle movement calculations
-	var dir_v : float = Input.get_axis("ui_up", "ui_down")
-	var dir_h : float = Input.get_axis("ui_left", "ui_right")
+	var dir_v : float = Input.get_axis("mv_up", "mv_down")
+	var dir_h : float = Input.get_axis("mv_left", "mv_right")
 	var dir : Vector2 = Vector2(dir_h, dir_v).normalized()
 	
 	move_speed = clampf(move_speed + acceleration * (1 if dir_h || dir_v else -1), 0, max_move_speed)

@@ -4,3 +4,7 @@ res://Scenes/Entities/Spider/dish.tscn
 res://Scenes/Modules/house.tscn
 res://Scenes/resource.tscn
 res://Scripts/resource.gd
+res://Scenes/Resources/res_gold.tscn
+res://Scripts/resource_parent.gd
+res://Scenes/Resources/res_wood.tscn
+res://Scripts/Entities/Spider/dish.gd
