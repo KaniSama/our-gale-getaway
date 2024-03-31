@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bo72u712x0vm1"]
+[gd_scene load_steps=28 format=3 uid="uid://bo72u712x0vm1"]
 
 [ext_resource type="PackedScene" uid="uid://dhaodou8csqc3" path="res://Scenes/Entities/Spider/dish.tscn" id="1_cm4g3"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_oo3gg"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://blwv53dsckmhd" path="res://Models/textures/ResourceSprites/character-human.png" id="7_hr31q"]
 [ext_resource type="PackedScene" uid="uid://q284c1bw8qhw" path="res://Scenes/wind.tscn" id="7_tsoi2"]
 [ext_resource type="PackedScene" uid="uid://04rr44j7r5pf" path="res://Scenes/Resources/res_iron.tscn" id="8_3oqe5"]
+[ext_resource type="PackedScene" uid="uid://dfcaume66knl5" path="res://Scenes/Resources/res_gold.tscn" id="14_akwja"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ad1ul"]
 shader = ExtResource("2_eyx6t")
@@ -204,6 +205,12 @@ transform = Transform3D(0.27008, 0, 0.962838, 0, 1, 0, -0.962838, 0, 0.27008, 15
 
 [node name="ResIron" parent="Res" instance=ExtResource("8_3oqe5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66089, 0, 3.61876)
+
+[node name="ResGold" parent="Res" instance=ExtResource("14_akwja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9448, 0, 6.9859)
+
+[node name="ResGold2" parent="Res" instance=ExtResource("14_akwja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58591, 0, 7.54532)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_akm0w")

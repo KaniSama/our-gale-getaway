@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfcaume66knl5"]
+
+[ext_resource type="PackedScene" uid="uid://csq3csq57rjxf" path="res://Models/Resource_Gold_2.blend" id="1_ymue2"]
+[ext_resource type="Script" path="res://Scripts/resource_parent.gd" id="2_ri1rq"]
+[ext_resource type="PackedScene" uid="uid://b0omg1eb3p7ve" path="res://Scenes/resource.tscn" id="3_bk0xp"]
+
+[node name="ResGold" instance=ExtResource("1_ymue2")]
+script = ExtResource("2_ri1rq")
+resource_type = "gold"
+
+[node name="Resource" parent="." index="1" instance=ExtResource("3_bk0xp")]
