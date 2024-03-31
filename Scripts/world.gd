@@ -9,6 +9,34 @@ var cam_shake = {
 }
 
 
+const resource_variants : Dictionary = {
+	"gold" = [
+		preload("res://Models/Resource_Gold_1.blend"),
+		preload("res://Models/Resource_Gold_2.blend"),
+		preload("res://Models/Resource_Gold_3.blend")
+	],
+	"stone" = [
+		preload("res://Models/Resource_Rock_1.blend"),
+		preload("res://Models/Resource_Rock_2.blend"),
+		preload("res://Models/Resource_Rock_3.blend")
+	],
+	"wood" = [
+		preload("res://Models/Resource_Tree1.blend"),
+		preload("res://Models/Resource_Tree2.blend"),
+		preload("res://Models/Resource_Tree_Group.blend"),
+		preload("res://Models/Resource_Tree_Group_Cut.blend")],
+	"iron" = [
+		preload("res://Models/Mine.blend")
+	]
+}
+const resource_icons : Dictionary = {
+	"gold" = preload("res://Models/textures/ResourceSprites/gold.png"),
+	"stone" = preload("res://Models/textures/ResourceSprites/stone.png"),
+	"wood" = preload("res://Models/textures/ResourceSprites/wood.png"),
+	"iron" = preload("res://Models/textures/ResourceSprites/iron.png")
+}
+
+
 ########################################### OVERRIDES
 func _____OVERRIDES(): pass
 
@@ -40,6 +68,11 @@ func _____HELPERS(): pass
 
 func shake_cam(frames : int = 30):
 	cam_shake["frames"] = frames
+
+func get_resource_variants() -> Dictionary:
+	return resource_variants
+func get_resource_icons() -> Dictionary:
+	return resource_icons
 
 
 

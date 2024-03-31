@@ -3,6 +3,12 @@ extends Node3D
 
 @onready var population : int
 @onready var modules : Array [ Node3D ]
+@onready var resources : Dictionary = {
+	"stone" = 0,
+	"iron" = 0,
+	"wood" = 0,
+	"gold" = 0
+}
 var editable : bool = false
 
 

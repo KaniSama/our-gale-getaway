@@ -5,3 +5,6 @@ res://Scenes/Modules/house.tscn
 res://Scripts/wind.gd
 res://Scripts/Entities/Spider/dish.gd
 res://Scripts/world.gd
+res://Scripts/resource.gd
+res://Scenes/resource.tscn
+res://Scripts/resource_parent.gd

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0omg1eb3p7ve"]
+
+[ext_resource type="Script" path="res://Scripts/resource.gd" id="1_g684o"]
+[ext_resource type="Texture2D" uid="uid://f840todl3bbv" path="res://Models/textures/ResourceSprites/food.png" id="2_8mp6f"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bu0hv"]
+height = 6.0
+
+[node name="Resource" type="Area3D"]
+script = ExtResource("1_g684o")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture_filter = 0
+texture = ExtResource("2_8mp6f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_bu0hv")
