@@ -1,3 +1,4 @@
+AudioStreamPlayer
 MeshInstance3D
 CPUParticles3D
 ProgressBar
@@ -11,4 +12,3 @@ GridContainer
 Node3D
 TextureRect
 Control
-Sprite3D

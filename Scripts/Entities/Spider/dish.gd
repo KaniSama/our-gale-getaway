@@ -29,6 +29,7 @@ var gather_progress : float = 0 :
 		gather_progress = value
 		emit_signal("gather_progress_updated", gather_progress)
 @onready var particles = $Armature/Particles
+@onready var audio = $SoundPlayer
 
 const states : Dictionary = {
 	"standing" : "standing",
@@ -170,6 +171,10 @@ func handle_movement(delta):
 		_new_body_pos -= Vector3(0, .01, 0)
 		_new_body_pos = _new_body_pos.clamp(_lowered, init_body_pos)
 		skeleton.set_bone_pose_position(body, _new_body_pos)
+		# Play drilling audio
+		audio.stream = load("res://Sound/step_between1.wav")
+		if !audio.playing:
+			audio.play()
 
 func gather_resources(delta):
 	if current_resource != null:
@@ -199,6 +204,14 @@ func add_module(module : Node3D):
 func exit_editing_mode():
 	state = states.standing
 
+func make_step_sound():
+	audio.stream = [
+		load("res://Sound/step1.wav"),
+		load("res://Sound/step2.wav"),
+		load("res://Sound/step3.wav"),
+	].pick_random()
+	audio.play()
+
 
 
 ########################################### SIGNALS
@@ -220,3 +233,13 @@ func _on_resource_area_area_exited(area):
 		current_resources_count -= 1
 		if current_resources_count <= 0:
 			current_resource = null
+
+
+func _on_leg_f_ik_target_stepped():
+	make_step_sound()
+func _on_leg_l_ik_target_stepped():
+	make_step_sound()
+func _on_leg_r_ik_target_stepped():
+	make_step_sound()
+
+

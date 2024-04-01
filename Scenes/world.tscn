@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bo72u712x0vm1"]
+[gd_scene load_steps=41 format=3 uid="uid://bo72u712x0vm1"]
 
 [ext_resource type="PackedScene" uid="uid://dhaodou8csqc3" path="res://Scenes/Entities/Spider/dish.tscn" id="1_cm4g3"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_oo3gg"]
@@ -20,8 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://crbauft2ey82o" path="res://Models/textures/Controls/keyboard_q.png" id="12_dmt8q"]
 [ext_resource type="Texture2D" uid="uid://xwlmv2yrcwyh" path="res://Models/textures/Controls/switch_buttons_up_outline.png" id="13_eor3v"]
 [ext_resource type="PackedScene" uid="uid://dfcaume66knl5" path="res://Scenes/Resources/res_gold.tscn" id="14_akwja"]
+[ext_resource type="AudioStream" uid="uid://tm2tymev8mi2" path="res://Sound/wind1.wav" id="14_uusob"]
 [ext_resource type="PackedScene" uid="uid://dg2gimxxr64g1" path="res://Scenes/Resources/res_wood.tscn" id="15_aw60i"]
+[ext_resource type="Script" path="res://Scripts/WindAudioPlayer.gd" id="15_mglwr"]
 [ext_resource type="PackedScene" uid="uid://brgpm8g10wbog" path="res://Scenes/Resources/res_stone.tscn" id="22_xru8a"]
+[ext_resource type="AudioStream" uid="uid://2g8lpnaj45wy" path="res://Sound/Entanglement by Alex McCulloch (CC0).mp3" id="25_m8fpg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ad1ul"]
 shader = ExtResource("2_eyx6t")
@@ -184,10 +187,11 @@ layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 8.0
-offset_top = 437.0
-offset_right = 222.0
-offset_bottom = -11.0
+offset_top = 484.0
+offset_right = 373.0
+offset_bottom = 36.0
 grow_vertical = 2
+scale = Vector2(0.78, 0.78)
 columns = 3
 
 [node name="ControlTexKBM" type="TextureRect" parent="Player/Camera3D/CanvasLayer/HUD/ControlsGrid"]
@@ -212,7 +216,7 @@ texture = ExtResource("11_sl80c")
 
 [node name="ControlLabel2" type="Label" parent="Player/Camera3D/CanvasLayer/HUD/ControlsGrid"]
 layout_mode = 2
-text = "Gather"
+text = "(When not moving) Gather"
 
 [node name="ControlTexKBM3" type="TextureRect" parent="Player/Camera3D/CanvasLayer/HUD/ControlsGrid"]
 layout_mode = 2
@@ -224,7 +228,7 @@ texture = ExtResource("13_eor3v")
 
 [node name="ControlLabel3" type="Label" parent="Player/Camera3D/CanvasLayer/HUD/ControlsGrid"]
 layout_mode = 2
-text = "Edit Mode"
+text = "(When not moving) Edit Mode"
 
 [node name="BuildingMenu" type="VBoxContainer" parent="Player/Camera3D/CanvasLayer/HUD"]
 visible = false
@@ -270,6 +274,12 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_peyr0")
 max_value = 1.0
 show_percentage = false
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/Camera3D"]
+stream = ExtResource("14_uusob")
+volume_db = 2.666
+autoplay = true
+script = ExtResource("15_mglwr")
+
 [node name="Camera3DEditMode" type="Camera3D" parent="Player"]
 transform = Transform3D(0.5, -0.612373, 0.612372, 0, 0.707107, 0.707107, -0.866025, -0.353553, 0.353553, 1.87532, 3.85573, 1.04569)
 size = 16.888
@@ -285,16 +295,7 @@ shape = SubResource("BoxShape3D_w5das")
 [node name="Modules" type="Node3D" parent="Player"]
 
 [node name="House" parent="Player/Modules" instance=ExtResource("2_ih6xq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99903, 0)
-
-[node name="House2" parent="Player/Modules" instance=ExtResource("2_ih6xq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364276, 3.99903, 0)
-
-[node name="House3" parent="Player/Modules" instance=ExtResource("2_ih6xq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364276, 3.99903, -0.432875)
-
-[node name="House4" parent="Player/Modules" instance=ExtResource("2_ih6xq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.364276, 4.38171, -0.432875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32642, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.492698, 0)
@@ -443,6 +444,12 @@ skeleton = NodePath("../..")
 transform = Transform3D(1.44652, 0, 0, 0, 1, 0, 0, 0, 1.44652, -7.05544, 22, 3.83556)
 mesh = SubResource("TorusMesh_jffev")
 skeleton = NodePath("../..")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="WorldEnvironment"]
+stream = ExtResource("25_m8fpg")
+volume_db = -2.476
+autoplay = true
+script = ExtResource("15_mglwr")
 
 [connection signal="gather_progress_updated" from="Player/Dish" to="." method="_on_dish_gather_progress_updated"]
 [connection signal="resources_updated" from="Player/Dish" to="." method="_on_dish_resources_updated"]

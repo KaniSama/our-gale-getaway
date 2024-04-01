@@ -221,7 +221,14 @@ linear_accel_min = -39.17
 linear_accel_max = -24.79
 scale_amount_min = 0.0
 
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="." index="1"]
+volume_db = -14.0
+max_polyphony = 6
+
 [connection signal="body_entered" from="Armature/Skeleton3D/Collisions/ModuleArea" to="." method="_on_module_area_body_entered"]
 [connection signal="body_exited" from="Armature/Skeleton3D/Collisions/ModuleArea" to="." method="_on_module_area_body_exited"]
 [connection signal="area_entered" from="Armature/Skeleton3D/Collisions/ResourceCheckerArea" to="." method="_on_resource_area_area_entered"]
 [connection signal="area_exited" from="Armature/Skeleton3D/Collisions/ResourceCheckerArea" to="." method="_on_resource_area_area_exited"]
+[connection signal="stepped" from="Armature/LegF_IK_Target" to="." method="_on_leg_f_ik_target_stepped"]
+[connection signal="stepped" from="Armature/LegL_IK_Target" to="." method="_on_leg_l_ik_target_stepped"]
+[connection signal="stepped" from="Armature/LegR_IK_Target" to="." method="_on_leg_r_ik_target_stepped"]

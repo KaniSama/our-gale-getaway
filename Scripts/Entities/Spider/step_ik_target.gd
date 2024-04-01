@@ -1,5 +1,8 @@
 extends Marker3D
 
+signal stepped
+signal stepping
+
 @export var step_target : Marker3D
 @export var step_distance : float = 3.0
 
@@ -26,6 +29,8 @@ func _____HELPERS(): pass
 
 
 func step():
+	emit_signal("stepping")
+	
 	var target_pos = step_target.global_position
 	var halfway = (global_position + target_pos) / 2
 	
@@ -35,5 +40,5 @@ func step():
 	tween.tween_property(self, "global_position", halfway + owner.basis.y, .1)
 	tween.tween_property(self, "global_position", target_pos, .07)
 	
-	tween.tween_callback(func(): is_stepping = false)
+	tween.tween_callback(func(): is_stepping = false; emit_signal("stepped"))
 

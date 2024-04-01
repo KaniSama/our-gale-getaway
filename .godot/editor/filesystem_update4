@@ -10,3 +10,5 @@ res://Scenes/wind.tscn
 res://Scripts/resource.gd
 res://Scenes/Resources/res_stone.tscn
 res://Scripts/world.gd
+res://Scripts/WindAudioPlayer.gd
+res://Scripts/Entities/Spider/step_ik_target.gd
