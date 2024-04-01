@@ -5,11 +5,6 @@ res://Scenes/Modules/house.tscn
 res://Scenes/resource.tscn
 res://Scenes/Resources/res_gold.tscn
 res://Scenes/Resources/res_wood.tscn
-res://Scenes/wind.tscn
 res://Scenes/Resources/res_stone.tscn
-res://Scripts/Modules/house.gd
-res://Scripts/Modules.gd
-res://Scripts/world.gd
+res://Scenes/wind.tscn
 res://Scenes/Modules/turret.tscn
-res://Scripts/Modules/turret.gd
-res://Scripts/Entities/Spider/dish.gd
