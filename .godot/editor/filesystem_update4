@@ -10,3 +10,6 @@ res://Scenes/Resources/res_stone.tscn
 res://Scripts/Modules/house.gd
 res://Scripts/Modules.gd
 res://Scripts/world.gd
+res://Scenes/Modules/turret.tscn
+res://Scripts/Modules/turret.gd
+res://Scripts/Entities/Spider/dish.gd

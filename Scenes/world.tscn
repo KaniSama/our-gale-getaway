@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bo72u712x0vm1"]
+[gd_scene load_steps=44 format=3 uid="uid://bo72u712x0vm1"]
 
 [ext_resource type="PackedScene" uid="uid://dhaodou8csqc3" path="res://Scenes/Entities/Spider/dish.tscn" id="1_cm4g3"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_oo3gg"]
@@ -40,6 +40,13 @@ bg_color = Color(0.482353, 0.858824, 0.909804, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5das"]
 size = Vector3(13, 1, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wpigt"]
+size = Vector3(2.38867, 0.373047, 2.38574)
+
+[sub_resource type="SphereMesh" id="SphereMesh_w8rth"]
+radial_segments = 8
+rings = 4
 
 [sub_resource type="BoxMesh" id="BoxMesh_xdqbx"]
 size = Vector3(44.4, 1, 44.4)
@@ -108,6 +115,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="HUD" type="Control" parent="Player/Camera3D/CanvasLayer"]
 clip_contents = true
@@ -117,6 +125,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ResourceGrid" type="GridContainer" parent="Player/Camera3D/CanvasLayer/HUD"]
 layout_direction = 3
@@ -128,6 +137,7 @@ offset_top = 494.0
 offset_right = 150.0
 offset_bottom = -8.0
 grow_vertical = 2
+mouse_filter = 2
 columns = 2
 
 [node name="WoodTex" type="TextureRect" parent="Player/Camera3D/CanvasLayer/HUD/ResourceGrid"]
@@ -172,6 +182,7 @@ offset_top = 8.0
 offset_right = 169.0
 offset_bottom = -344.0
 grow_vertical = 2
+mouse_filter = 2
 columns = 2
 
 [node name="PopulationTex" type="TextureRect" parent="Player/Camera3D/CanvasLayer/HUD/StatsGrid"]
@@ -193,6 +204,7 @@ offset_right = 373.0
 offset_bottom = 36.0
 grow_vertical = 2
 scale = Vector2(0.78, 0.78)
+mouse_filter = 2
 columns = 3
 
 [node name="ControlTexKBM" type="TextureRect" parent="Player/Camera3D/CanvasLayer/HUD/ControlsGrid"]
@@ -229,10 +241,9 @@ texture = ExtResource("13_eor3v")
 
 [node name="ControlLabel3" type="Label" parent="Player/Camera3D/CanvasLayer/HUD/ControlsGrid"]
 layout_mode = 2
-text = "(When not moving) Edit Mode"
+text = "(When not moving) Build Mode"
 
 [node name="BuildingMenu" type="VBoxContainer" parent="Player/Camera3D/CanvasLayer/HUD"]
-visible = false
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -250,13 +261,13 @@ alignment = 2
 layout_mode = 2
 text = "Build Modules:"
 
-[node name="PanelContainer" type="Button" parent="Player/Camera3D/CanvasLayer/HUD/BuildingMenu"]
+[node name="BuildHouseButton" type="Button" parent="Player/Camera3D/CanvasLayer/HUD/BuildingMenu"]
 layout_mode = 2
 text = "House (20 Wood, 10 Stone)"
 
-[node name="PanelContainer2" type="Button" parent="Player/Camera3D/CanvasLayer/HUD/BuildingMenu"]
+[node name="BuildTurretButton" type="Button" parent="Player/Camera3D/CanvasLayer/HUD/BuildingMenu"]
 layout_mode = 2
-text = "Turret (20 Iron, 10 Gold)"
+text = "Turret (20 Iron, 20 Stone, 10 Gold)"
 
 [node name="ResourceGatherProgressBar" type="ProgressBar" parent="Player/Camera3D/CanvasLayer/HUD"]
 layout_mode = 1
@@ -270,6 +281,7 @@ offset_right = -444.0
 offset_bottom = -93.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_vk71y")
 theme_override_styles/fill = SubResource("StyleBoxFlat_peyr0")
 max_value = 1.0
@@ -287,6 +299,19 @@ size = 16.888
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.490742, 0)
 shape = SubResource("BoxShape3D_w5das")
 
+[node name="EditingArea" type="Area3D" parent="Player/Dish"]
+collision_layer = 32
+collision_mask = 0
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Dish/EditingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_wpigt")
+
+[node name="ModulePlacer" type="MeshInstance3D" parent="Player/Dish/EditingArea"]
+transform = Transform3D(0.355, 0, 0, 0, 0.355, 0, 0, 0, 0.355, 0, 3.19023, 0)
+mesh = SubResource("SphereMesh_w8rth")
+
 [node name="Modules" type="Node3D" parent="Player"]
 script = ExtResource("15_4e1id")
 
@@ -301,6 +326,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gvpug")
 script = ExtResource("3_anktj")
 
 [node name="Wind" parent="." instance=ExtResource("7_tsoi2")]
+transform = Transform3D(0.79578, 0, -0.605586, 0, 1, 0, 0.605586, 0, 0.79578, 12.1565, 5, 13.1648)
 
 [node name="Wind2" parent="." instance=ExtResource("7_tsoi2")]
 transform = Transform3D(-0.803213, 0, -0.595692, 0, 1, 0, 0.595692, 0, -0.803213, -8.83051, 5, 12.3839)
@@ -452,5 +478,8 @@ volume_db = 2.666
 autoplay = true
 script = ExtResource("15_mglwr")
 
+[connection signal="pressed" from="Player/Camera3D/CanvasLayer/HUD/BuildingMenu/BuildHouseButton" to="." method="_on_build_house_button_pressed"]
+[connection signal="pressed" from="Player/Camera3D/CanvasLayer/HUD/BuildingMenu/BuildTurretButton" to="." method="_on_build_turret_button_pressed"]
 [connection signal="gather_progress_updated" from="Player/Dish" to="." method="_on_dish_gather_progress_updated"]
 [connection signal="resources_updated" from="Player/Dish" to="." method="_on_dish_resources_updated"]
+[connection signal="input_event" from="Player/Dish/EditingArea" to="." method="_on_editing_area_input_event"]

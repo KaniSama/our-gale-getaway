@@ -11,7 +11,24 @@ var cam_shake = {
 	"intensity" : .01
 }
 @onready var modules = $Player/Modules
+@onready var module_placer = $Player/Dish/EditingArea/ModulePlacer
 @onready var bulding_menu = $Player/Camera3D/CanvasLayer/HUD/BuildingMenu
+@onready var currently_building_module = preload("res://Scenes/Modules/house.tscn")
+@onready var current_building_cost : Dictionary = house_cost
+const house_cost : Dictionary = {
+	"population" = 0,
+	"gold" = 0,
+	"stone" = 10,
+	"wood" = 20,
+	"iron" = 0
+}
+const turret_cost : Dictionary = {
+	"population" = 0,
+	"gold" = 10,
+	"stone" = 20,
+	"wood" = 0,
+	"iron" = 20
+}
 @onready var resource_grid = $Player/Camera3D/CanvasLayer/HUD/ResourceGrid
 @onready var stats_grid = $Player/Camera3D/CanvasLayer/HUD/StatsGrid
 @onready var gather_progress_bar = $Player/Camera3D/CanvasLayer/HUD/ResourceGatherProgressBar
@@ -87,6 +104,7 @@ func _physics_process(delta):
 	
 	gather_progress_bar.visible = dish.state == dish.states.gathering
 	bulding_menu.visible = dish.state == dish.states.editing
+	module_placer.visible = dish.state == dish.states.editing
 	
 	cam_shake["frames"] = clamp(cam_shake["frames"] - 1, 0, 1000)
 	
@@ -97,6 +115,19 @@ func _physics_process(delta):
 
 ########################################### HELPER FUNCTIONS
 func _____HELPERS(): pass
+
+
+func add_module():
+	if modules.is_editing():
+		for __key in dish.resources.keys():
+			if dish.resources[__key] < current_building_cost[__key]:
+				return
+		for __key in dish.resources.keys():
+			dish.resources[__key] -= current_building_cost[__key]
+		
+		var _new_module = currently_building_module.instantiate()
+		modules.add_child(_new_module)
+		_new_module.global_position = module_placer.global_position
 
 
 func shake_cam(frames : int = 30):
@@ -126,3 +157,19 @@ func _on_dish_resources_updated(_resources : Dictionary):
 
 func _on_dish_gather_progress_updated(_gather_progress):
 	gather_progress_bar.value = _gather_progress
+
+
+func _on_editing_area_input_event(camera, event, _position, normal, shape_idx):
+	if event is InputEventMouseMotion:
+		module_placer.global_position = _position + Vector3(0, 1, 0)
+	if event.is_action_pressed("ui_lmb"):
+		add_module()
+
+
+
+func _on_build_house_button_pressed():
+	currently_building_module = load("res://Scenes/Modules/house.tscn")
+	current_building_cost = house_cost
+func _on_build_turret_button_pressed():
+	currently_building_module = load("res://Scenes/Modules/turret.tscn")
+	current_building_cost = turret_cost
