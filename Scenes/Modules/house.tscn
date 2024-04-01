@@ -91,3 +91,5 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_l7uib")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

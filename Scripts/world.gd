@@ -10,6 +10,7 @@ var cam_shake = {
 	"frames" : 0,
 	"intensity" : .01
 }
+@onready var modules = $Player/Modules
 @onready var bulding_menu = $Player/Camera3D/CanvasLayer/HUD/BuildingMenu
 @onready var resource_grid = $Player/Camera3D/CanvasLayer/HUD/ResourceGrid
 @onready var stats_grid = $Player/Camera3D/CanvasLayer/HUD/StatsGrid
@@ -55,6 +56,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	modules.set_state(dish.state)
 	if dish.state != dish.states.editing:
 		cam.global_position += \
 		((dish.global_position + init_cam_pos) - \
